@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> RTA Online Store - Shop</title>
+        <!-- Load Vue via CDN -->
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <link rel="stylesheet" href="./src/css/style.css">
+    </head>
+
+    <body>
+
+        <!-- Start of VUE Instance -->
+        <div id="app">
+
+            <div id="home">
+
+                <header id="header" class="header">
+
+                    <div class="ribbon">
+
+                        <div id="title">
+                            <img id="favicon" src="./src/resource/main/favicon.jfif" alt="icon">
+                            <h2>CodeSpace: FED Online Course Store</h2>
+                        </div>
+
+                        <div id="cart">
+                            <button>Cart :</button>
+                            <span id="cart-items-no">{{cartLength}}</span>
+                        </div>
+                    </div>
+
+                </header>
+
+                <nav class="nav">
+                    <button>Shop</button>
+                    <button>About</button>
+                    <button>Lookbook</button>
+                    <button>Contact</button>
+                </nav>
+
+                <div id="catalog" class="catalog">
+
+                    <!-- Create Individual Product Component -->
+                    <div class="component" v-for = "course in products">
+
+                        <h3>{{course.course}}</h3>
+
+                        <div class="component-details">
+
+                            <!-- Preview Div to display image -->
+                            <div class="component-details-preview">
+                                <!-- Bind image tag src to course.preivew property" -->
+                                <img class="preview-img" v-bind:src=" './src/resource/component/' + course.preview " alt="preview">
+                            </div>
+
+                            <!-- Component info div to display component info props -->
+                            <div class="component-details-info">
+
+                                {{course.level}} <br>
+                                {{course.languages}} <br>
+                                {{course.cost}} <br>
+
+                                <!-- Add click event listener to order -->
+                                <button v-on:click = "purchase(course)" >Order</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- End Individual Product Component -->
+
+                </div>
+
+                <!-- Footer -->
+                <footer id="footer" class="footer">
+
+                    <div>
+                        <h3>Contact</h3>
+
+                        <p>
+                            learn@codespace.co.za <br>
+                            087 095 3202 <br>
+                            021 685 0991
+                        </p>
+
+                        <br>
+
+                        <p>
+                            6 Beach Rd, Woodstock,<br>
+                            Cape Town, 8000
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3>Socials</h3>
+
+                        <p>
+                            <a href="https://www.codespace.co.za/" target="_blank">Website</a>
+                        </p>
+
+                        <p>
+                            <a href="https://www.linkedin.com/school/codespaceza/" target="_blank">LinkedIn</a>
+                        </p>
+
+                        <p>
+                            <a href="https://www.youtube.com/channel/UCfmXJliguiwBv2QlRzWdrxA" target="_blank">YouTube</a>
+                        </p>
+                    </div>
+
+                    <div class="footer-full">
+                        <img class="logo" src="./src/resource/main/primary-logo-full-colour-a.svg" alt="">
+                    </div>
+
+                </footer>
+
+
+            </div>
+
+        </div>
+        <!-- End of VUE Instance -->
+
+
+        <!-- End of Markup -->
+
+        <!-- Start of Vue Script -->
+
+        <script src="./src/components/app.js"></script>
+        
+    </body>
+
+</html>
